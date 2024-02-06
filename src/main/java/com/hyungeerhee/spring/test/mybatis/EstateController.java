@@ -43,5 +43,25 @@ public class EstateController {
 		return estateList;
 	}
 	
+	@RequestMapping("/insert/1")
+	@ResponseBody
+	public String createEstate() {
+		
+		Estate estate = new Estate();
+		estate.setRealtorId(3);
+		estate.setAddress("푸르지용 리버 303동 1104호");
+		estate.setArea(89);
+		estate.setType("매매");
+		estate.setPrice(10000);
+		
+		int count = estateService.addEstateByObject(estate);
+				
+		return "수행결과 : " + count;
+	}
+	
+	
+	
+	
+	
 	
 }

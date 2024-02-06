@@ -16,4 +16,6 @@ public interface EstateRepository {
 	public List<Estate> selectEstateListByAreaAndPrice(
 			@Param("area") int area
 			, @Param("price") int price);
+	
+	public int insertEstateByObject(Estate estate);
 }

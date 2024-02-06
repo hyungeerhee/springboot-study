@@ -31,4 +31,10 @@ public class EstateService {
 		List<Estate> estateList = estateRepository.selectEstateListByAreaAndPrice(area, price);
 		return estateList;
 	}
+	
+	public int addEstateByObject(Estate estate) {
+		int count = estateRepository.insertEstateByObject(estate);
+		
+		return count; 
+	}
 }
