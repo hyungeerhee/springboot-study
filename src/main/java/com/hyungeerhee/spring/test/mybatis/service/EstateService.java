@@ -1,5 +1,7 @@
 package com.hyungeerhee.spring.test.mybatis.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +18,17 @@ public class EstateService {
 	public Estate getEstate(int id) {
 		Estate estate = estateRepository.selectEstate(id);
 		return estate;
+	}
+	
+	public List<Estate> getEstateListByRentPrice(int rentPrice) {
+		List<Estate> estateList = estateRepository.selectEstateListByRentPrice(rentPrice);
+		return estateList;
+		
+		
+	}
+	
+	public List<Estate> getEstateListByAreaAndPrice(int area, int price) {
+		List<Estate> estateList = estateRepository.selectEstateListByAreaAndPrice(area, price);
+		return estateList;
 	}
 }

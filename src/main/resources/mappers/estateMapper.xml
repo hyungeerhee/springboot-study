@@ -24,4 +24,48 @@
  		
  	</select>
  	
+
+ 	<select id="selectEstateListByRentPrice"
+ 	parameterType="int"
+ 	resultType="com.hyungeerhee.spring.test.mybatis.domain.Estate">
+ 		SELECT
+ 			`id`
+ 			, `realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		From 
+ 			`real_estate`
+ 		WHERE 	
+ 			<![CDATA[`rentPrice` < #{rent}]]>
+ 	</select>
+ 	
+ 	
+  	<select id="selectEstateListByAreaAndPrice"
+ 	parameterType="int"
+ 	resultType="com.hyungeerhee.spring.test.mybatis.domain.Estate">
+ 		SELECT
+ 			`id`
+ 			, `realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		From 
+ 			`real_estate`
+ 		WHERE 	
+ 			<![CDATA[`type` = '매매' 
+ 			AND `area` >= #{area} 
+ 			AND `price` <= #{price}]]>
+ 	</select>
+ 	
+ 	
+ 	
  </mapper>
