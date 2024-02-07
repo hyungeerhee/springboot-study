@@ -56,11 +56,40 @@ public class EstateController {
 		
 		int count = estateService.addEstateByObject(estate);
 				
-		return "수행결과 : " + count;
+		return "입력 성공 : " + count;
 	}
 	
+	@RequestMapping("/insert/2")
+	@ResponseBody
+	public String createEstate(@RequestParam("realtorId") int realtorId) {
+		
+		int count = estateService.addEstate(realtorId, "썅떼빌리버 오피스텔 814호", 45, "월세", 100000, 120);
+		return "입력 성공 : " + count;
+	}
 	
+	@RequestMapping("/update")
+	@ResponseBody
+	public String updateEstate() {
+		//id가 24인 매물 정보에 type을 전세, 보증금 70000으로 변경
+		int count = estateService.updateEstate(24, "전세", 70000);
+		return "수정 성공 : " + count;
+	}
 	
+	@RequestMapping("/delete") 
+	@ResponseBody
+	public String deleteEstate(@RequestParam("id") int id) {
+		int count = estateService.deleteEstate(id);
+		return "삭제 성공 : " + count;
+	
+		
+		
+		
+		
+		
+		
+		
+		
+	}
 	
 	
 	

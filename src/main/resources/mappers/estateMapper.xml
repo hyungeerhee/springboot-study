@@ -68,13 +68,17 @@
  	
  	<insert id= "insertEstateByObject"
  	parameterType="com.hyungeerhee.spring.test.mybatis.domain.Estate">
- 		INSERT INTO `real_estate`
+ 	<!-- 파라미터 타입은 클래스 객체 자체 -->
+  	<!-- return type은 int이므로 생략 가능 -->
+ 		INSERT INTO 
+ 				`real_estate`
  			( 
  				`realtorId`
  				, `address`
  				, `area`
  				, `type`
  				, `price`
+ 				, `rentPrice`
  			)
  			VALUE
  			(
@@ -83,7 +87,7 @@
  				, #{area}
  				, #{type}
  				, #{price}
- 				
+ 				, #{rentPrice}
  			)
  			
  			
@@ -95,6 +99,74 @@
  			
  			
  	</insert>
+ 	
+ 	
+ 	<insert id = "insertEstate" parameterType="map"> 
+ 	<!-- 메소드 타입이 여러개므로 map으로 처리 -->
+ 		INSERT INTO 
+ 				`real_estate`
+ 			( 
+ 				`realtorId`
+ 				, `address`
+ 				, `area`
+ 				, `type`
+ 				, `price`
+ 				, `rentPrice`
+ 			)
+ 			VALUE
+ 			(
+ 				#{realtorId}
+ 				, #{address}
+ 				, #{area}
+ 				, #{type}
+ 				, #{price}
+ 				, #{rentPrice}
+ 			) 		
+ 	
+ 	
+ 	</insert>
+ 	
+ 	<update id="updateEstate" parameterType="map">
+	 	UPDATE 
+	 		`real_estate`
+		SET 
+			`type` = '전세'
+		    , `price` = 70000
+		    , `updatedAt` = now() 
+		WHERE 
+			`id` = #{id};	
+ 		
+ 	</update>
+ 	
+ 	<delete id="deleteEstate" parameterType="int">
+ 		DELETE FROM 
+			`real_estate`
+		WHERE 
+			`id` = #{id};
+ 	</delete>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
  	
  	
  </mapper>

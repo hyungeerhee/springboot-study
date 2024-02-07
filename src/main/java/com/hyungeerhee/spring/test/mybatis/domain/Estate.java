@@ -9,14 +9,11 @@ public class Estate {
 	private int area;
 	private String type;
 	private int price;
-	private int rentPrice;
+	private Integer rentPrice; //null이 가능하도록 Integer로 사용
 	private Date createdAt;
 	private Date updatedAt;
 	public int getId() {
 		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public int getRealtorId() {
 		return realtorId;
@@ -48,10 +45,10 @@ public class Estate {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getRentPrice() {
+	public Integer getRentPrice() {
 		return rentPrice;
 	}
-	public void setRentPrice(int rentPrice) {
+	public void setRentPrice(Integer rentPrice) {
 		this.rentPrice = rentPrice;
 	}
 	public Date getCreatedAt() {
@@ -66,5 +63,9 @@ public class Estate {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 }
