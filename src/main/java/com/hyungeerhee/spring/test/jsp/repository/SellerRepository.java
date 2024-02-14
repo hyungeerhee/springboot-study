@@ -14,4 +14,7 @@ public interface SellerRepository {
 			
 	public Seller selectLastSeller();
 	
+	public Seller getSeller(@Param("id") int id);
+
+	
 }

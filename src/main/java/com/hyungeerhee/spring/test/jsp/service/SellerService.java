@@ -20,5 +20,12 @@ public class SellerService {
 		Seller seller = sellerRepository.selectLastSeller();
 		return seller;
 	}
+	
+	public Seller getSeller(int id) {
+		Seller seller = sellerRepository.getSeller(id);
+		return seller;
+		
+		
+	}
 
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hyungeerhee.spring.test.jsp.domain.Seller;
 import com.hyungeerhee.spring.test.jsp.service.SellerService;
 
 @RequestMapping("/jsp/seller")
@@ -34,15 +35,24 @@ public class SellerController {
 	}
 	
 	@GetMapping("/info")
-	public String sellerInfo(Model model) {
+	public String sellerInfo(
+			@RequestParam(value="id", required=false) Integer id, 
+			//null을 사용하기 위해서는 Integer(Wrapper class)를 사용,  int는 null 사용불가
+			Model model) {
 		
-		Seller seller = sellerService.getLastSeller();
+		// id가 전달되면, 일치하는 판매자 정보
+		if(id != null) {
+			Seller seller = sellerService.getSeller(id);
+			model.addAttribute("result", seller);
+		}
 		
+		// id가 전달 되지 않으면, 가장 최근 등록된 판매자 정보
+		else { Seller seller = sellerService.getLastSeller();
+				model.addAttribute("result", seller);
+		}
 		
-		model.addAttribute("result", seller);
 		
 		return "jsp/sellerInfo";
 	}
 	
-
 }
