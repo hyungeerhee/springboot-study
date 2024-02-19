@@ -46,12 +46,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="cardBills" items="${cardBills}">  
+				<c:forEach var="cardBill" items="${cardBills}">  
 				<tr>
-					<td>${cardBills.store }</td>
-					<td><fmt:formatNumber value="${cardBills.pay }" type="currency"/></td>
-					<td><c:set var="dateTimeString" value="${cardBills.date}"/><fmt:formatDate value="${dateTimeString }" pattern="yyyy년 MM월 dd일" /></td>
-					<td>${cardBills.installment }</td>
+					<td>${cardBill.store }</td>
+					<td><fmt:formatNumber value="${cardBill.pay }" type="currency"/></td>
+					<fmt:parseDate value="${cardBill.date }" pattern="yyyy-MM-dd" var="date" />
+					<td><fmt:formatDate value="${date }" pattern="yyyy년 M월 d일" /> </td>
+					<td>${cardBill.installment }</td>
 				</tr>
 				</c:forEach>
 			</tbody>

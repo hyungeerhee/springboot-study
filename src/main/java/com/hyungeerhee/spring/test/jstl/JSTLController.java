@@ -33,7 +33,7 @@ public class JSTLController {
 		model.addAttribute("musicRanking", musicRanking);
 		
 		List<Map<String, Object>> membership = new ArrayList<>();
-
+ 
 		Map<String, Object> member = new HashMap<>();
 		member.put("name", "손오공");
 		member.put("phoneNumber", "010-1234-5678");
