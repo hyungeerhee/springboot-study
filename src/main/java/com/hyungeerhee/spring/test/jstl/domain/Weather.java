@@ -2,13 +2,16 @@ package com.hyungeerhee.spring.test.jstl.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Weather {
-	
+
 	private int id;
 	private String weather;
+	@DateTimeFormat(pattern="yyyy년MM월dd일")
 	private Date date;
 	private double temperatures;
-	private double recipitation;
+	private double precipitation;
 	private String microDust;
 	private double windSpeed;
 	private Date createdAt;
@@ -38,11 +41,11 @@ public class Weather {
 	public void setTemperatures(double temperatures) {
 		this.temperatures = temperatures;
 	}
-	public double getRecipitation() {
-		return recipitation;
+	public double getPrecipitation() {
+		return precipitation;
 	}
-	public void setRecipitation(double recipitation) {
-		this.recipitation = recipitation;
+	public void setPrecipitation(double precipitation) {
+		this.precipitation = precipitation;
 	}
 	public String getMicroDust() {
 		return microDust;
@@ -70,5 +73,4 @@ public class Weather {
 	}
 	
 	
-
 }

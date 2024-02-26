@@ -19,7 +19,6 @@
 					<td>이름</td>
 					<td>국적</td>
 					<td>이메일</td>
-					<td>이메일</td>
 					<td>자기소개</td>
 				</tr>
 			</thead>
@@ -44,6 +43,8 @@
 					<c:if test="${fn:length(member.introduce) > 15 }">
 					...
 					</c:if>
+					<td>No</td>
+					
 					</td>
 				</tr>
 				</c:forEach>
