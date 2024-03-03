@@ -5,10 +5,11 @@ import java.util.Date;
 public class Favorite {
 	
 	private int id;
-	private String name ;
+	private String name;
 	private String url;
 	private Date createdAt;
 	private Date updatedAt;
+	
 	public int getId() {
 		return id;
 	}
@@ -39,7 +40,4 @@ public class Favorite {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	
-	
-
 }

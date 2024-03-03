@@ -21,14 +21,16 @@
 					<th>No.</th>
 					<th>이름</th>
 					<th>주소</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="favorite" items="${favoriteList }" varStatus="status">
+				<c:forEach var="favorite" items="${favoriteList }">
 				<tr>
-					<td>${status.count }</td>
+					<td>${favorite.id }</td>
 					<td>${favorite.name }</td>
 					<td>${favorite.url }</td>
+					<td><button type="button" data-favorite-id="${favorite.id }" class="btn btn-danger btn-sm delete-btn">삭제</button> </td>
 				</tr>
 				</c:forEach>
 			</tbody>
@@ -40,5 +42,39 @@
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+	<script>
+		$(document).ready(function() {
+			$(".delete-btn").on("click", function() {
+				
+				let id = $(this).data("favorite-id");
+				
+				$.ajax({
+					type:"get"
+					, url:"/ajax/favorite/delete"
+					, data:{"id":id}
+				 	, success:function(data) {
+				 		
+				 		// 성공 : {"result":"success"}
+						// 실패 : {"result":"fail"}
+				 		if(data.result == "success") {
+				 			location.reload();
+				 		} else {
+				 			alert("삭제 실패");
+				 		}
+				 		
+				 	}
+				 	, error:function() {
+				 		alert("삭제 에러");
+				 	}
+					
+				});
+				
+				
+			});
+			
+			
+		});
+	</script> 
 </body>
 </html>
